@@ -1,22 +1,17 @@
 package org.beszti.bmi;
 
-import java.util.Scanner;
-
 public class BmiApp {
-	public int m, s;
 	public BmiApp(){
-		System.out.println("Kérem adja meg a magasságát:");
-        Scanner magassag = new Scanner(System.in);
-        m = Integer.parseInt(magassag.next());
-        magassag.close();
-        
-        System.out.println("Kérem adja meg a súlyát:");
-        Scanner suly = new Scanner(System.in);
-        s = Integer.parseInt(suly.next());
-        suly.close();
 	}
 	
-	public double bmiErtek(int suly, int magassag){
-		return magassag/suly;
+	public double bmiValue(int suly, int magassag){
+		return Math.floor((suly/Math.sqrt(magassag))*10000);
+	}
+	public boolean isValid(int bmi){
+		return bmi > 10 && bmi < 80 ? true : false;
+	}
+	
+	public String bmiResult(int bmi){
+		return bmi < 20 ? "Malnourished" : bmi > 28 ? "Overweight" : "Normal";
 	}
 }

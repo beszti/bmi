@@ -7,16 +7,20 @@ public class BmiTest{
 	
 	public void setUp() throws Exception{
 		bmi = new BmiApp();
-	}
-    
-    public void testBmiWhenInteger()
-    {
-    	double res = bmi.bmiErtek(60, 180);
-        assertEquals(3, res);
+	}    
+    public void testBmiMalnourished()    {
+        assertEquals("Malnourished", bmi.bmiValue(50, 180));
+    }    
+    public void testBmiOverweight(){
+    	assertEquals("Overweight", bmi.bmiValue(120, 180));
     }
-    public void testBmiWhenDouble()
-    {
-    	double res = bmi.bmiErtek(50, 160);
-        assertEquals(3.2, res);
+    public void testBmiNormal(){
+    	assertEquals("Normal", bmi.bmiValue(80, 180));
+    }
+    public void testIsValid(){
+    	assertEquals(true, bmi.bmiValue(80, 180));
+    }
+    public void testIsNotValid(){
+    	assertEquals(false, bmi.bmiValue(300, 180));
     }
 }
